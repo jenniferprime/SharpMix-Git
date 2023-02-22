@@ -9,6 +9,7 @@ namespace SharpMix.Common.Module.MappedActions
         private MappedTypeAction _mappedType;
 
         protected bool _feedback;
+        protected bool _virtuallyMapped;
 
         public MidiMappedAction(MappedTypeAction mappedType)
         {

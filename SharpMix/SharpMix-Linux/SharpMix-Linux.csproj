@@ -85,6 +85,7 @@
     <Compile Include="Linux\Actions\PlayerCtl.cs" />
     <Compile Include="Linux\Cli\Model\PlayerCtl.cs" />
     <Compile Include="Linux\Cli\Handler\PlayerCtl.cs" />
+    <Compile Include="Linux\Cli\Model\PulseAudio\PulseSink.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />

@@ -25,7 +25,7 @@ namespace SharpMix.Common.Module.MappedActions
             { return false; }
             switch (mappedTypeToggle)
             {
-                case MappedTypeToggle.PulseMute:
+                case MappedTypeToggle.PulseDeviceMute:
                     currentValue = 127 - currentValue;
 
                     return PulseAudio.MuteDevice(pulseDevice, currentValue);

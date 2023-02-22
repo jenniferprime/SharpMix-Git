@@ -8,6 +8,25 @@ namespace SharpMix.Linux.Actions
     public class PulseAudio
     {
 
+        private static bool runPulseCMD(string Arguments, int timeout = 100)
+        {
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = SMConfig.PULSEAUDIOCTL;
+                process.StartInfo.Arguments = Arguments;
+                process.StartInfo.CreateNoWindow = true;
+
+                process.Start();
+                process.WaitForExit(timeout);
+                return true;
+            }
+            catch (Exception ea)
+            {
+                return false;
+            }
+        }
+
         public static bool VolumeDevice(PulseDevice pulseDevice, int CCValue)
         {
             try
@@ -75,6 +94,18 @@ namespace SharpMix.Linux.Actions
         {
             return false;
         }
+
+        public static bool VolumeInputSink(PulseSink pulseSink, int CCValue)
+        {
+            int volume = CCValue << 9;
+            return runPulseCMD($"{SMConfig.PULSEAUDIOCTL_SETINPUTSINKVOLUME} {pulseSink.SinkID} {volume}");
+
+
+            //TODO: try/catch real inefficient here and also maybe add like pulseaudio feedback
+        }
+
+        public static bool MuteInputSink()
+        { return false; }
 
         public static void idkmanthisjustheresoimember()
         {

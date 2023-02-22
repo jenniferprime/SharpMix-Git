@@ -16,6 +16,9 @@ namespace SharpMix.Common.Module
 
         private Dictionary<int, int> _mapCCtoValue; //CC:Control
 
+        Dictionary<String, int> mappedSink;
+        Dictionary<String, int> mappedDevice;
+
         private List<String[]> _groups;
 
         public VirtualMidiMap()
@@ -23,6 +26,9 @@ namespace SharpMix.Common.Module
             _mappedControlChange2 = new Dictionary<int, MidiMappedAction>();
             _controlChangeValue = new Dictionary<int, int>();
             _mapCCtoValue = new Dictionary<int, int>();
+
+            mappedSink = new Dictionary<string, int>();
+            mappedDevice = new Dictionary<string, int>();
         }
 
         public bool MapAction(int CC, MidiMappedAction mappedAction)

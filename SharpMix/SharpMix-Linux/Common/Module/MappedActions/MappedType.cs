@@ -8,21 +8,27 @@ namespace SharpMix.Common.Module.MappedActions
 
     public enum MappedTypeFader
     {
-        PulseVolume,
-        PulseVolumeProcess,
+        PulseDeviceVolume,
+        PulseInputSinkVolume,
         Brightness,
-        PulseBalance,
+        PulseDeviceBalance,
+        PulseInputSinkBalance,
     }
 
     public enum MappedTypeToggle
     {
-        PulseMute,
-        PulseMuteProcess,
+        PulseDeviceMute,
+        PulseInputSinkMute,
         
     }
 
     public enum MappedTypeAction
     {
+        MappedFader,
+        MappedToggle,
+        MappedLayer,
+
+
         PulseMute,
         PulseMuteProcess,
         SetPID,

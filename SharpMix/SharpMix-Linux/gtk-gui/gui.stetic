@@ -171,10 +171,67 @@
             <property name="MemberName" />
             <property name="WidthRequest">1200</property>
             <property name="HeightRequest">500</property>
-            <property name="NRows">3</property>
-            <property name="NColumns">8</property>
+            <property name="NRows">5</property>
+            <property name="NColumns">9</property>
             <property name="RowSpacing">6</property>
             <property name="ColumnSpacing">6</property>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
+            <child>
+              <placeholder />
+            </child>
             <child>
               <placeholder />
             </child>
@@ -247,8 +304,8 @@
                 <signal name="Clicked" handler="OnBtnG1MuteClicked" />
               </widget>
               <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
+                <property name="TopAttach">2</property>
+                <property name="BottomAttach">3</property>
                 <property name="AutoSize">True</property>
                 <property name="XOptions">Fill</property>
                 <property name="YOptions">Fill</property>
@@ -269,9 +326,48 @@
                 <property name="UseUnderline">True</property>
               </widget>
               <packing>
-                <property name="TopAttach">2</property>
-                <property name="BottomAttach">3</property>
+                <property name="TopAttach">3</property>
+                <property name="BottomAttach">4</property>
                 <property name="AutoSize">True</property>
+                <property name="XOptions">Fill</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">False</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="btn_mixerMapMaster">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextOnly</property>
+                <property name="Label" translatable="yes">A</property>
+                <property name="UseUnderline">True</property>
+              </widget>
+              <packing>
+                <property name="TopAttach">4</property>
+                <property name="BottomAttach">5</property>
+                <property name="AutoSize">True</property>
+                <property name="XOptions">Fill</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">False</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="l_mixerDeviceLabel">
+                <property name="MemberName" />
+                <property name="LabelProp">Master</property>
+              </widget>
+              <packing>
+                <property name="AutoSize">False</property>
                 <property name="XOptions">Fill</property>
                 <property name="YOptions">Fill</property>
                 <property name="XExpand">False</property>
@@ -285,6 +381,7 @@
             <child>
               <widget class="Gtk.VScale" id="s_mainout">
                 <property name="MemberName" />
+                <property name="WidthRequest">50</property>
                 <property name="HeightRequest">200</property>
                 <property name="CanFocus">True</property>
                 <property name="Inverted">True</property>
@@ -297,6 +394,8 @@
                 <property name="ValuePos">Top</property>
               </widget>
               <packing>
+                <property name="TopAttach">1</property>
+                <property name="BottomAttach">2</property>
                 <property name="AutoSize">True</property>
                 <property name="XOptions">Fill</property>
                 <property name="XExpand">False</property>
@@ -453,6 +552,34 @@
           </widget>
           <packing>
             <property name="Y">788</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btn_listSinkInput">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">List Pulse Sink Inputs</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnListSinkInputClicked" />
+          </widget>
+          <packing>
+            <property name="X">1501</property>
+            <property name="Y">152</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btn_addFaders">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Add Faders</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnAddFadersClicked" />
+          </widget>
+          <packing>
+            <property name="X">1421</property>
+            <property name="Y">378</property>
           </packing>
         </child>
       </widget>

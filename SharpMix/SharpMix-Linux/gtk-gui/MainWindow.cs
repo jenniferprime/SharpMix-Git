@@ -33,6 +33,10 @@ public partial class MainWindow
 
 	private global::Gtk.Button btn_g1_solo;
 
+	private global::Gtk.Button btn_mixerMapMaster;
+
+	private global::Gtk.Label l_mixerDeviceLabel;
+
 	private global::Gtk.VScale s_mainout;
 
 	private global::Gtk.Button btn_forceCloseMidi;
@@ -56,6 +60,10 @@ public partial class MainWindow
 	private global::Gtk.Label l_stIdkSomemoremore;
 
 	private global::Gtk.Label l_stCopyright;
+
+	private global::Gtk.Button btn_listSinkInput;
+
+	private global::Gtk.Button btn_addFaders;
 
 	protected virtual void Build()
 	{
@@ -183,7 +191,7 @@ public partial class MainWindow
 		w11.X = 5;
 		w11.Y = 5;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.l_tableMixer = new global::Gtk.Table(((uint)(3)), ((uint)(8)), false);
+		this.l_tableMixer = new global::Gtk.Table(((uint)(5)), ((uint)(9)), false);
 		this.l_tableMixer.WidthRequest = 1200;
 		this.l_tableMixer.HeightRequest = 500;
 		this.l_tableMixer.Name = "l_tableMixer";
@@ -196,8 +204,8 @@ public partial class MainWindow
 		this.btn_g1_mute.Label = global::Mono.Unix.Catalog.GetString("M");
 		this.l_tableMixer.Add(this.btn_g1_mute);
 		global::Gtk.Table.TableChild w12 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.btn_g1_mute]));
-		w12.TopAttach = ((uint)(1));
-		w12.BottomAttach = ((uint)(2));
+		w12.TopAttach = ((uint)(2));
+		w12.BottomAttach = ((uint)(3));
 		w12.XOptions = ((global::Gtk.AttachOptions)(4));
 		w12.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child l_tableMixer.Gtk.Table+TableChild
@@ -208,12 +216,33 @@ public partial class MainWindow
 		this.btn_g1_solo.Label = global::Mono.Unix.Catalog.GetString("S");
 		this.l_tableMixer.Add(this.btn_g1_solo);
 		global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.btn_g1_solo]));
-		w13.TopAttach = ((uint)(2));
-		w13.BottomAttach = ((uint)(3));
+		w13.TopAttach = ((uint)(3));
+		w13.BottomAttach = ((uint)(4));
 		w13.XOptions = ((global::Gtk.AttachOptions)(4));
 		w13.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child l_tableMixer.Gtk.Table+TableChild
+		this.btn_mixerMapMaster = new global::Gtk.Button();
+		this.btn_mixerMapMaster.CanFocus = true;
+		this.btn_mixerMapMaster.Name = "btn_mixerMapMaster";
+		this.btn_mixerMapMaster.UseUnderline = true;
+		this.btn_mixerMapMaster.Label = global::Mono.Unix.Catalog.GetString("A");
+		this.l_tableMixer.Add(this.btn_mixerMapMaster);
+		global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.btn_mixerMapMaster]));
+		w14.TopAttach = ((uint)(4));
+		w14.BottomAttach = ((uint)(5));
+		w14.XOptions = ((global::Gtk.AttachOptions)(4));
+		w14.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child l_tableMixer.Gtk.Table+TableChild
+		this.l_mixerDeviceLabel = new global::Gtk.Label();
+		this.l_mixerDeviceLabel.Name = "l_mixerDeviceLabel";
+		this.l_mixerDeviceLabel.LabelProp = "Master";
+		this.l_tableMixer.Add(this.l_mixerDeviceLabel);
+		global::Gtk.Table.TableChild w15 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.l_mixerDeviceLabel]));
+		w15.XOptions = ((global::Gtk.AttachOptions)(4));
+		w15.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child l_tableMixer.Gtk.Table+TableChild
 		this.s_mainout = new global::Gtk.VScale(null);
+		this.s_mainout.WidthRequest = 50;
 		this.s_mainout.HeightRequest = 200;
 		this.s_mainout.CanFocus = true;
 		this.s_mainout.Name = "s_mainout";
@@ -226,12 +255,14 @@ public partial class MainWindow
 		this.s_mainout.Digits = 0;
 		this.s_mainout.ValuePos = ((global::Gtk.PositionType)(2));
 		this.l_tableMixer.Add(this.s_mainout);
-		global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.s_mainout]));
-		w14.XOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w16 = ((global::Gtk.Table.TableChild)(this.l_tableMixer[this.s_mainout]));
+		w16.TopAttach = ((uint)(1));
+		w16.BottomAttach = ((uint)(2));
+		w16.XOptions = ((global::Gtk.AttachOptions)(4));
 		this.fixed1.Add(this.l_tableMixer);
-		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.l_tableMixer]));
-		w15.X = 28;
-		w15.Y = 65;
+		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.l_tableMixer]));
+		w17.X = 28;
+		w17.Y = 65;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.btn_forceCloseMidi = new global::Gtk.Button();
 		this.btn_forceCloseMidi.CanFocus = true;
@@ -239,9 +270,9 @@ public partial class MainWindow
 		this.btn_forceCloseMidi.UseUnderline = true;
 		this.btn_forceCloseMidi.Label = global::Mono.Unix.Catalog.GetString("Force Stop Midi");
 		this.fixed1.Add(this.btn_forceCloseMidi);
-		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_forceCloseMidi]));
-		w16.X = 1266;
-		w16.Y = 700;
+		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_forceCloseMidi]));
+		w18.X = 1266;
+		w18.Y = 700;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.b_MidiLoad = new global::Gtk.Button();
 		this.b_MidiLoad.CanFocus = true;
@@ -249,9 +280,9 @@ public partial class MainWindow
 		this.b_MidiLoad.UseUnderline = true;
 		this.b_MidiLoad.Label = global::Mono.Unix.Catalog.GetString("Load Midi");
 		this.fixed1.Add(this.b_MidiLoad);
-		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_MidiLoad]));
-		w17.X = 1071;
-		w17.Y = 667;
+		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_MidiLoad]));
+		w19.X = 1071;
+		w19.Y = 667;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.b_MidiCFG = new global::Gtk.Button();
 		this.b_MidiCFG.CanFocus = true;
@@ -259,9 +290,9 @@ public partial class MainWindow
 		this.b_MidiCFG.UseUnderline = true;
 		this.b_MidiCFG.Label = global::Mono.Unix.Catalog.GetString("Midi Settings");
 		this.fixed1.Add(this.b_MidiCFG);
-		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_MidiCFG]));
-		w18.X = 966;
-		w18.Y = 674;
+		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_MidiCFG]));
+		w20.X = 966;
+		w20.Y = 674;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.b_setMainOut = new global::Gtk.Button();
 		this.b_setMainOut.CanFocus = true;
@@ -269,9 +300,9 @@ public partial class MainWindow
 		this.b_setMainOut.UseUnderline = true;
 		this.b_setMainOut.Label = global::Mono.Unix.Catalog.GetString("Set PulseMain Out Volume");
 		this.fixed1.Add(this.b_setMainOut);
-		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_setMainOut]));
-		w19.X = 378;
-		w19.Y = 650;
+		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.b_setMainOut]));
+		w21.X = 378;
+		w21.Y = 650;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.l_hBoxStatus = new global::Gtk.HBox();
 		this.l_hBoxStatus.WidthRequest = 1200;
@@ -283,61 +314,81 @@ public partial class MainWindow
 		this.l_stMidiDevice.Name = "l_stMidiDevice";
 		this.l_stMidiDevice.LabelProp = global::Mono.Unix.Catalog.GetString("Device");
 		this.l_hBoxStatus.Add(this.l_stMidiDevice);
-		global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiDevice]));
-		w20.Position = 0;
-		w20.Expand = false;
-		w20.Fill = false;
+		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiDevice]));
+		w22.Position = 0;
+		w22.Expand = false;
+		w22.Fill = false;
 		// Container child l_hBoxStatus.Gtk.Box+BoxChild
 		this.l_stMidiMap = new global::Gtk.Label();
 		this.l_stMidiMap.Name = "l_stMidiMap";
 		this.l_stMidiMap.LabelProp = global::Mono.Unix.Catalog.GetString("Map");
 		this.l_hBoxStatus.Add(this.l_stMidiMap);
-		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiMap]));
-		w21.Position = 1;
-		w21.Expand = false;
-		w21.Fill = false;
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiMap]));
+		w23.Position = 1;
+		w23.Expand = false;
+		w23.Fill = false;
 		// Container child l_hBoxStatus.Gtk.Box+BoxChild
 		this.l_stMidiStatus = new global::Gtk.Label();
 		this.l_stMidiStatus.Name = "l_stMidiStatus";
 		this.l_stMidiStatus.LabelProp = global::Mono.Unix.Catalog.GetString("Midi");
 		this.l_hBoxStatus.Add(this.l_stMidiStatus);
-		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiStatus]));
-		w22.Position = 2;
-		w22.Expand = false;
-		w22.Fill = false;
+		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stMidiStatus]));
+		w24.Position = 2;
+		w24.Expand = false;
+		w24.Fill = false;
 		// Container child l_hBoxStatus.Gtk.Box+BoxChild
 		this.l_stIdkSomemore = new global::Gtk.Label();
 		this.l_stIdkSomemore.Name = "l_stIdkSomemore";
 		this.l_stIdkSomemore.LabelProp = global::Mono.Unix.Catalog.GetString("label6");
 		this.l_hBoxStatus.Add(this.l_stIdkSomemore);
-		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stIdkSomemore]));
-		w23.Position = 3;
-		w23.Expand = false;
-		w23.Fill = false;
+		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stIdkSomemore]));
+		w25.Position = 3;
+		w25.Expand = false;
+		w25.Fill = false;
 		// Container child l_hBoxStatus.Gtk.Box+BoxChild
 		this.l_stIdkSomemoremore = new global::Gtk.Label();
 		this.l_stIdkSomemoremore.Name = "l_stIdkSomemoremore";
 		this.l_stIdkSomemoremore.LabelProp = global::Mono.Unix.Catalog.GetString("label7");
 		this.l_hBoxStatus.Add(this.l_stIdkSomemoremore);
-		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stIdkSomemoremore]));
-		w24.Position = 4;
-		w24.Expand = false;
-		w24.Fill = false;
+		global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stIdkSomemoremore]));
+		w26.Position = 4;
+		w26.Expand = false;
+		w26.Fill = false;
 		// Container child l_hBoxStatus.Gtk.Box+BoxChild
 		this.l_stCopyright = new global::Gtk.Label();
 		this.l_stCopyright.Name = "l_stCopyright";
 		this.l_stCopyright.LabelProp = global::Mono.Unix.Catalog.GetString("(c) JenniferPrime 2023");
 		this.l_stCopyright.Justify = ((global::Gtk.Justification)(1));
 		this.l_hBoxStatus.Add(this.l_stCopyright);
-		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stCopyright]));
-		w25.PackType = ((global::Gtk.PackType)(1));
-		w25.Position = 5;
-		w25.Expand = false;
-		w25.Fill = false;
-		w25.Padding = ((uint)(10));
+		global::Gtk.Box.BoxChild w27 = ((global::Gtk.Box.BoxChild)(this.l_hBoxStatus[this.l_stCopyright]));
+		w27.PackType = ((global::Gtk.PackType)(1));
+		w27.Position = 5;
+		w27.Expand = false;
+		w27.Fill = false;
+		w27.Padding = ((uint)(10));
 		this.fixed1.Add(this.l_hBoxStatus);
-		global::Gtk.Fixed.FixedChild w26 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.l_hBoxStatus]));
-		w26.Y = 788;
+		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.l_hBoxStatus]));
+		w28.Y = 788;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.btn_listSinkInput = new global::Gtk.Button();
+		this.btn_listSinkInput.CanFocus = true;
+		this.btn_listSinkInput.Name = "btn_listSinkInput";
+		this.btn_listSinkInput.UseUnderline = true;
+		this.btn_listSinkInput.Label = global::Mono.Unix.Catalog.GetString("List Pulse Sink Inputs");
+		this.fixed1.Add(this.btn_listSinkInput);
+		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_listSinkInput]));
+		w29.X = 1501;
+		w29.Y = 152;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.btn_addFaders = new global::Gtk.Button();
+		this.btn_addFaders.CanFocus = true;
+		this.btn_addFaders.Name = "btn_addFaders";
+		this.btn_addFaders.UseUnderline = true;
+		this.btn_addFaders.Label = global::Mono.Unix.Catalog.GetString("Add Faders");
+		this.fixed1.Add(this.btn_addFaders);
+		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_addFaders]));
+		w30.X = 1421;
+		w30.Y = 378;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
@@ -357,5 +408,7 @@ public partial class MainWindow
 		this.b_MidiLoad.Clicked += new global::System.EventHandler(this.OnBMidiLoadClicked);
 		this.b_MidiCFG.Clicked += new global::System.EventHandler(this.OnBMidiCFGClicked);
 		this.b_setMainOut.Clicked += new global::System.EventHandler(this.OnBSetMainOutClicked);
+		this.btn_listSinkInput.Clicked += new global::System.EventHandler(this.OnBtnListSinkInputClicked);
+		this.btn_addFaders.Clicked += new global::System.EventHandler(this.OnBtnAddFadersClicked);
 	}
 }

@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("SharpMix-Linux")]
+[assembly: AssemblyTitle("SharpMix-Gtk")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("jennifer")]
+[assembly: AssemblyConfiguration("Debug")]
+[assembly: AssemblyCompany("JenniferPrime")]
+[assembly: AssemblyProduct("SharpMix")]
+[assembly: AssemblyCopyright("JenniferPrime")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
