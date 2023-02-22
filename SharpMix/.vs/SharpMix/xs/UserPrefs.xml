@@ -1,0 +1,54 @@
+﻿<Properties StartupConfiguration="{1C2E9EDD-F2BF-46D0-A7AC-FF410DF6B69B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/MainWindow.cs">
+    <Files>
+      <File FileName="SharpMix-Linux/SMConfig.cs" Line="21" Column="55" />
+      <File FileName="SharpMix-Linux/Linux/Actions/PlayerCtl.cs" Line="59" Column="54" />
+      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MidiMappedAction.cs" Line="13" Column="61" />
+      <File FileName="SharpMix-Linux/MainWindow.cs" Line="203" Column="9" />
+      <File FileName="SharpMix-Linux/Common/Module/MappedActions/PremappedActions.cs" Line="22" Column="119" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Model/PlayerCtl.cs" Line="8" Column="13" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Model/AseqdumpPortInfo.cs" Line="2" Column="35" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Handler/PlayerCtl.cs" Line="91" Column="65" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Handler/MidiFeedbackHandler.cs" Line="6" Column="37" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Handler/AseqdumpHandler.cs" Line="28" Column="13" />
+      <File FileName="SharpMix-Linux/Linux/Actions/PulseAudio.cs" Line="21" Column="17" NotebookId="1" />
+      <File FileName="SharpMix-Linux/Common/Module/VirtualMidiMap.cs" Line="65" Column="9" NotebookId="1" />
+      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MappedToggle.cs" Line="24" Column="13" NotebookId="1" />
+      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MappedType.cs" Line="33" Column="23" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SharpMix" expanded="True">
+            <Node name="SharpMix-Linux" expanded="True">
+              <Node name="Common" expanded="True">
+                <Node name="Module" expanded="True">
+                  <Node name="MappedActions" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Linux" expanded="True">
+                <Node name="Actions" expanded="True" />
+                <Node name="Cli" expanded="True">
+                  <Node name="Handler" expanded="True" />
+                  <Node name="Model" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SharpMix-Linux PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

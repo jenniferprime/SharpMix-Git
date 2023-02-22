@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{1C2E9EDD-F2BF-46D0-A7AC-FF410DF6B69B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SharpMixLinux</RootNamespace>
+    <AssemblyName>SharpMix-Linux</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MidiDeviceDialog.cs" />
+    <Compile Include="gtk-gui\SharpMixLinux.MidiDeviceDialog.cs" />
+    <Compile Include="Linux\Cli\Handler\AseqdumpHandler.cs" />
+    <Compile Include="Linux\Cli\Model\AseqdumpPortInfo.cs" />
+    <Compile Include="SMConfig.cs" />
+    <Compile Include="Common\Module\MidiMap.cs" />
+    <Compile Include="Common\Module\MidiMapper.cs" />
+    <Compile Include="Common\Module\DefaultMidiMap.cs" />
+    <Compile Include="Common\Module\VirtualMidiMap.cs" />
+    <Compile Include="Common\Module\MappedActions\MidiMappedAction.cs" />
+    <Compile Include="Common\Module\MappedActions\MappedToggle.cs" />
+    <Compile Include="Common\Module\MappedActions\MappedLayer.cs" />
+    <Compile Include="Common\Module\MappedActions\MappedFader.cs" />
+    <Compile Include="Common\Module\MappedActions\PremappedActions.cs" />
+    <Compile Include="Linux\Actions\PulseAudio.cs" />
+    <Compile Include="Common\Module\MappedActions\MappedType.cs" />
+    <Compile Include="Linux\Cli\Model\PulseAudio\PulseDevice.cs" />
+    <Compile Include="Linux\Cli\Model\PulseAudio\PulseInputSink.cs" />
+    <Compile Include="Linux\Cli\Handler\AseqdumpHandlerCC.cs" />
+    <Compile Include="Linux\Cli\Handler\MidiFeedbackHandler.cs" />
+    <Compile Include="Linux\Actions\PlayerCtl.cs" />
+    <Compile Include="Linux\Cli\Model\PlayerCtl.cs" />
+    <Compile Include="Linux\Cli\Handler\PlayerCtl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Linux\" />
+    <Folder Include="Linux\Cli\" />
+    <Folder Include="Linux\Cli\Model\" />
+    <Folder Include="Linux\Cli\Handler\" />
+    <Folder Include="Common\Module\" />
+    <Folder Include="Common\Module\MappedActions\" />
+    <Folder Include="Common\Module\New Folder\" />
+    <Folder Include="Linux\Actions\" />
+    <Folder Include="Linux\Cli\Model\PulseAudio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
