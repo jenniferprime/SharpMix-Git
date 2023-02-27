@@ -20,7 +20,7 @@ namespace SharpMix.Linux.Config
         public const string PULSEAUDIOCTL_SETINPUTSINKMUTE = "set-sink-input-mute"; //also used with toggle  PULSEAUDIOCTL_SETDEVICEMUTETOGGLE
 
         public const String PULSEAUDIOCTL_LISTSINKINPUT = "list sink-inputs";
-        //public const String PULSEAUDIOCTL_LISTSINKOUTPUT = "list sink-outputs";
+        public const String PULSEAUDIOCTL_LISTSINKOUTPUT = "list sinks";
 
         //Config for PlayerCTL
         public const String PLAYERCTL = "playerctl";

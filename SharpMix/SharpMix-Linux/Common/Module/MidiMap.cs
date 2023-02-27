@@ -7,7 +7,8 @@ namespace SharpMix.Common.Module
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         public class ButtonMap
         {
-            public string CC { get; set; }
+            public int CC { get; set; }
+            public int Control { get; set; }
             public int ON { get; set; }
             public int OFF { get; set; }
             public bool ToggleInHardware { get; set; }
@@ -48,6 +49,9 @@ namespace SharpMix.Common.Module
             public string friendlyName { get; set; }
             public string midiClientName { get; set; }
             public string midiPortName { get; set; }
+            public int buttonAmount { get; set; }
+            public int faderAmount { get; set; }
+            public int knobAmount { get; set; }
             public List<FaderMap> faderMap { get; set; }
             public List<ButtonMap> buttonMap { get; set; }
             public List<KnobMap> knobMap { get; set; }

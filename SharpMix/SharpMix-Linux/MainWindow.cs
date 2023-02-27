@@ -16,10 +16,12 @@ using SharpMix.Linux.Cli.Model.PulseAudio;
 
 public partial class MainWindow : Gtk.Window
 {
-    const int FADEROFFSET  = 0;
+    const int FADEROFFSET = 0;
     const int KNOBOFFSET = 100;
     const int BUTTONOFFSET = 200;
     const int TOGGLEOFFSET = 300;
+    const int LABELOFFSET = 500;
+
 
     System.Timers.Timer transportTimer;
 
@@ -27,14 +29,13 @@ public partial class MainWindow : Gtk.Window
 
     Dictionary<int, Widget> controlID;
 
-   
+
 
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
+        //gtk winform thingy
         Build();
-
-
 
         controlID = new Dictionary<int, Widget>();
         virtualMidiMap = new VirtualMidiMap();
@@ -62,22 +63,24 @@ public partial class MainWindow : Gtk.Window
         //missing CCtoControl
 
         //map PlayPause
-                //virtualMidiMap.MapAction(41, new MidiMappedAction(MappedTypeAction.MediaPlayPause));
-        virtualMidiMap.MapAction(41, PremappedActions.preMappedActions["A:Media:Play"]);
-        virtualMidiMap.MapCCtoControl(41, 41 + BUTTONOFFSET);
-        controlID[41 + BUTTONOFFSET] = btn_transportPlay;
+        //virtualMidiMap.MapAction(41, new MidiMappedAction(MappedTypeAction.MediaPlayPause));
+        /*virtualMidiMap.MapAction(41, PremappedActions.preMappedActions["A:Media:Play"]);
+        virtualMidiMap.MapCCtoControl(41, 1000);
+        controlID[1000] = btn_transportPlay;
 
         virtualMidiMap.MapAction(42, PremappedActions.preMappedActions["A:Media:Pause"]);
-        virtualMidiMap.MapCCtoControl(42, 42 + BUTTONOFFSET);
-        controlID[42 + BUTTONOFFSET] = btn_transportPause;
+        virtualMidiMap.MapCCtoControl(42, 1001);
+        controlID[1001] = btn_transportPause;
 
         virtualMidiMap.MapAction(43, PremappedActions.preMappedActions["A:Media:Previous"]);
-        virtualMidiMap.MapCCtoControl(43, 43 + BUTTONOFFSET);
-        controlID[43 + BUTTONOFFSET] = btn_transportPrev;
+        virtualMidiMap.MapCCtoControl(43, 1002);
+        controlID[1002] = btn_transportPrev;
 
         virtualMidiMap.MapAction(44, PremappedActions.preMappedActions["A:Media:Next"]);
-        virtualMidiMap.MapCCtoControl(44, 44 + BUTTONOFFSET);
-        controlID[44 + BUTTONOFFSET] = btn_transportNext;
+        virtualMidiMap.MapCCtoControl(44, 1003);
+        controlID[1003] = btn_transportNext;*/
+
+        //virtualMidiMap.MapAction(65, PremappedActions.preMappedActions["A:Media:Next"]);
 
     }
 
@@ -91,9 +94,9 @@ public partial class MainWindow : Gtk.Window
     {
         //transportcontrol timer
         transportTimer = new System.Timers.Timer(5000);
-        transportTimer.Elapsed += (sender, e) => { 
-        UpdateTransportControls();
-         };
+        transportTimer.Elapsed += (sender, e) => {
+            UpdateTransportControls();
+        };
 
 
 
@@ -136,7 +139,7 @@ public partial class MainWindow : Gtk.Window
             l_stMidiStatus.Text = "MIDI: listening";
 
 
-            aseqdumpHandlerCC  = new AseqdumpHandlerCC(portInfo, virtualMidiMap);
+            aseqdumpHandlerCC = new AseqdumpHandlerCC(portInfo, virtualMidiMap);
             aseqdumpHandlerCC.StartAseqdump();
             aseqdumpHandlerCC.CCArrived += AseqdumpHandlerCC_CCArrived;
 
@@ -208,7 +211,7 @@ public partial class MainWindow : Gtk.Window
 
     private void UpdateTransportControls()
     {
-         if (!ck_autoUpdateUI.Active) { return; } //it should be fine without
+        if (!ck_autoUpdateUI.Active) { return; } //it should be fine without
         //update transport controls
         PlayerCtlStatus status = PlayerCtl.GetCtlStatus();
 
@@ -228,7 +231,7 @@ public partial class MainWindow : Gtk.Window
         l_mediaArtist.Text = "Artist:" + PlayerCtl.GetMetaArtist();
     }
 
-        protected void OnBtnTransportPlayClicked(object sender, EventArgs e)
+    protected void OnBtnTransportPlayClicked(object sender, EventArgs e)
     {
         virtualMidiMap.CCAction(41, 127);
     }
@@ -270,7 +273,7 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnBtnListSinkInputClicked(object sender, EventArgs e)
     {
-        List<PulseSink> sinks = PulseSink.ListAllSinks();
+        List<PulseSink> sinks = PulseSink.ListAllSinkInputs();
 
         SharpMix.Linux.Actions.PulseAudio.VolumeInputSink(sinks[0], (int)s_mainout.Value);
 
@@ -286,32 +289,41 @@ public partial class MainWindow : Gtk.Window
 
     private void AddMixerControls(int amount)
     {
-        for (int i = 1; i < amount+1; i++)
+        AddUnmappedControl(s_mainout, 0, FADEROFFSET);
+        AddUnmappedControl(btn_g1_solo, 0, TOGGLEOFFSET + 50);
+        AddUnmappedControl(btn_g1_mute, 0, TOGGLEOFFSET);
+
+
+        for (int i = 1; i < amount + 1; i++)
         {
+            //create Widgets
             Gtk.VScale fader = GenerateUIMixerFader(GenerateMixerUIControlName(i, "fader", "mixer_s_"));
             Gtk.Button mute = GenerateUIMixerButton(GenerateMixerUIControlName(i, "btnMute", "mixer_s_"), "M");
             Gtk.Button solo = GenerateUIMixerButton(GenerateMixerUIControlName(i, "btnSolo", "mixer_s_"), "S");
             Gtk.Button attach = GenerateUIMixerButton(GenerateMixerUIControlName(i, "btnAttach", "mixer_s_"), "A");
             Gtk.Label label = GenerateUIMixerLabel(GenerateMixerUIControlName(i, "lTrackLabel", "mixer_s_"), "Config...");
 
+            //map widgets
+            AddUnmappedControl(fader, i, FADEROFFSET);
+            AddUnmappedControl(mute, i, TOGGLEOFFSET);
+            AddUnmappedControl(solo, i, TOGGLEOFFSET + 50);
+            AddUnmappedControl(attach, i, BUTTONOFFSET);
+            AddUnmappedControl(label, i, LABELOFFSET);
 
-            /*l_tableMixer.Add(label);
-            Gtk.Table.TableChild tableChild = (Gtk.Table.TableChild)(l_tableMixer[label]);
-            tableChild.TopAttach = ((uint)0);
-            tableChild.BottomAttach = ((uint)1);
+            //create callbacks
+            mute.Clicked += (sender, e) => { WidgetClicked(i + TOGGLEOFFSET, i, MappedTypeAction.MappedToggle); };
+            solo.Clicked += (sender, e) => { WidgetClicked(i + TOGGLEOFFSET + 50, i, MappedTypeAction.MappedToggle); };
+            attach.Clicked += (sender, e) => { WidgetClicked(i + BUTTONOFFSET, i, MappedTypeAction.MappedButton); };
+            fader.ValueChanged += (sender, e) => { /*TODO: implement this */ };
 
-            tableChild.LeftAttach = (uint)1;
-            tableChild.RightAttach = (uint)2;
 
-            tableChild.XOptions = AttachOptions.Fill;
-            tableChild.YOptions = AttachOptions.Fill;*/
 
             // left attach, right, top , bottom: left and right attach stay constant per group and top/bottom constant
-            l_tableMixer.Attach(attach, (uint)i, (uint)i+1, 4, 5);
-            l_tableMixer.Attach(label,  (uint)i, (uint)i+1, 0, 1);
-            l_tableMixer.Attach(solo,   (uint)i, (uint)i+1, 3, 4);
-            l_tableMixer.Attach(mute,   (uint)i, (uint)i+1, 2, 3);
-            l_tableMixer.Attach(fader,  (uint)i, (uint)i+1, 1, 2);
+            l_tableMixer.Attach(attach, (uint)i, (uint)i + 1, 4, 5);
+            l_tableMixer.Attach(label, (uint)i, (uint)i + 1, 0, 1);
+            l_tableMixer.Attach(solo, (uint)i, (uint)i + 1, 3, 4);
+            l_tableMixer.Attach(mute, (uint)i, (uint)i + 1, 2, 3);
+            l_tableMixer.Attach(fader, (uint)i, (uint)i + 1, 1, 2);
 
             //(Gtk.Table.TableChild)(l_tableMixer[label])
             Gtk.Table.TableChild lableC = (Gtk.Table.TableChild)(l_tableMixer[label]);
@@ -333,15 +345,35 @@ public partial class MainWindow : Gtk.Window
             Gtk.Table.TableChild soloC = (Gtk.Table.TableChild)(l_tableMixer[solo]);
             soloC.XOptions = AttachOptions.Fill;
             soloC.YOptions = AttachOptions.Fill;
-
-
-
-            label.Show();
-            attach.Show();
-            solo.Show();
-            mute.Show();
-            fader.Show();
         }
+
+        foreach (KeyValuePair<int, Widget> pair in controlID)
+        {
+            pair.Value.Show();
+        }
+
+        DebugMapControlsToCC();
+    }
+
+    private void DebugMapControlsToCC()
+    {
+        //209 to something, that's R on group 2
+
+        // virtualMidiMap.MapCCtoControl(65, 209);
+
+
+        MidiMapper mapper = new MidiMapper();
+        mapper.LoadMap(midiMapFileName);
+
+        //virtualMidiMap.MapCCtoControl(mapper.MidiMap.buttonMap[0].CC, mapper.MidiMap.buttonMap[0].Control);
+        //if(PremappedActions.preMappedActions.ContainsKey(mapper.MidiMap.buttonMap[0].Function)) virtualMidiMap.MapAction(mapper.MidiMap.buttonMap[0].CC, PremappedActions.preMappedActions[mapper.MidiMap.buttonMap[0].Function]);
+
+        foreach (MidiMap.ButtonMap buttonMap in mapper.MidiMap.buttonMap)
+        {
+            virtualMidiMap.MapCCtoControl(buttonMap.CC, buttonMap.Control);
+            if (PremappedActions.preMappedActions.ContainsKey(buttonMap.Function)) virtualMidiMap.MapAction(buttonMap.CC, PremappedActions.preMappedActions[buttonMap.Function]);
+        }
+
     }
 
     private Gtk.VScale GenerateUIMixerFader(string name)
@@ -397,5 +429,39 @@ public partial class MainWindow : Gtk.Window
         if (fadersAdded) return;
         AddMixerControls(8);
         fadersAdded = true;
+    }
+
+
+
+    void AddUnmappedControl(Widget control, int index, int offset)
+    {
+        controlID[index + offset] = control;
+    }
+
+
+    void WidgetClicked(int id, int groupId, MappedTypeAction mappedTypeAction)
+    {
+        int CC = 199;
+        int CCn = virtualMidiMap.GetCCfromControlID(id);
+        if (CCn != -1) CC = CCn;
+
+        switch (mappedTypeAction)
+        {
+            case MappedTypeAction.MappedToggle:
+                virtualMidiMap.CCAction(CC/*CC is template cuz I dumb*/, virtualMidiMap.GetNewToggleValue(CC));
+                break;
+            case MappedTypeAction.MappedButton:
+                virtualMidiMap.CCAction(CC/*CC is template cuz I dumb*/, 127);
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    protected void OnBtnOpenAttachDialogClicked(object sender, EventArgs e)
+    {
+        AttachAction attachAction = new AttachAction();
+        attachAction.Run();
     }
 }

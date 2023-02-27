@@ -37,6 +37,7 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
             
         }
 
+        //input sink constructor
         public PulseSink(PulseSinkType sinkType, int sinkID, string driver, string protoVolume, string nodeName, string applicationName, string applicationXDisplay, string applicationUser, string applicationHost, string applicationPID)
         {
             _sinkType = sinkType;
@@ -50,6 +51,15 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
             _applicationHost = applicationHost;
             _applicationPID = applicationPID;
         }
+
+        public PulseSink(PulseSinkType sinkType, int sinkID, string driver, string protoVoluem, string friendlyName)
+        {
+            _sinkType = sinkType;
+            _sinkID = sinkID;
+            _protoVolume = protoVoluem;
+            _nodeName = friendlyName;
+        }
+
 
         //this one does nullchecks????
         /*public PulseSink(PulseSinkType sinkType, string sinkID, string driver, string protoVolume, string nodeName, string applicationName, string applicationXDisplay, string applicationUser, string applicationHost, string applicationPID)
@@ -66,7 +76,7 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
             _applicationPID = applicationPID ?? throw new ArgumentNullException(nameof(applicationPID));
         }*/
 
-        public static List<PulseSink> ListAllSinks()
+        public static List<PulseSink> ListAllSinkInputs()
         {
             List<PulseSink> sinks = new List<PulseSink>();
 
@@ -82,7 +92,7 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
                 process.Start();
 
                 int sid = -1;
-                PulseSinkType sinkType = PulseSinkType.DefaultSink;
+                PulseSinkType sinkType = PulseSinkType.SinkInput;
                 string driver = ""; // 
                 string protoVolume = "";// 
                 string nodeName = "";// 
@@ -163,6 +173,79 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
             return sinks;
         }
 
+        public static List<PulseSink> ListAllSinkOutputs()
+        {
+            List<PulseSink> sinks = new List<PulseSink>();
+
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = SMConfig.PULSEAUDIOCTL;
+                process.StartInfo.Arguments = SMConfig.PULSEAUDIOCTL_LISTSINKOUTPUT;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = false;
+                process.StartInfo.RedirectStandardOutput = true;
+
+                process.Start();
+
+                int sid = -1;
+                PulseSinkType sinkType = PulseSinkType.SinkOutput;
+                string driver = "";
+                string protoVolume = "";
+                string nodeName = "";
+                string applicationName = "";
+                string applicationXDisplay = "";  
+                string applicationUser = "";
+                string applicationHost = "";
+                string applicationPID = "";
+
+                while (!process.StandardOutput.EndOfStream)
+                {
+                    string line = process.StandardOutput.ReadLine();
+                    if (line.Contains("Sink #"))
+                    {
+                        if (sid != -1)
+                        {
+                            sinks.Add(new PulseSink(sinkType, sid, driver, protoVolume, nodeName));
+                        }
+
+                        driver = ""; protoVolume = ""; nodeName = ""; applicationName = ""; applicationXDisplay = ""; applicationUser = ""; applicationHost = ""; applicationPID = "";
+                        sid = -1;
+                        string sidRegex = Regex.Replace(line, "\\D", "");
+                        int.TryParse(sidRegex, out sid);
+                    }
+                    else if (line.Contains("Driver: "))
+                    {
+                        driver = Regex.Replace(line, "\\s*Driver: ", "");
+                    }
+                    else if (line.Contains("Volume: "))
+                    {
+                        protoVolume = Regex.Replace(line, "\\s*Volume: ", "");
+                    }
+                    else if (line.Contains("alsa.card_name = "))
+                    {
+                        nodeName = StripPluseListWithEqualsSign(line, "alsa.card_name");
+                    }
+
+                    /*else if (line.Contains("Volume: "))
+                    {
+                        protoVolume = Regex.Replace(line, "\\s*Volume: ", "");
+                    }*/
+                }
+                if (sid != -1 && sinks.Count == 0)
+                {
+                    sinks.Add(new PulseSink(sinkType, sid, driver, protoVolume, nodeName, applicationName, applicationXDisplay, applicationUser, applicationHost, applicationPID));
+                }
+            }
+            catch (Exception ea)
+            {
+
+                return null;
+            }
+
+            return sinks;
+        }
+
         private static readonly char[] spaceChars = new char[] { '\t', ' ' };
 
         public static string StripPluseListWithEqualsSign(string line, string value)
@@ -175,6 +258,19 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
 
 
             return extractedValue;
+        }
+
+        override public String ToString()
+        {
+            switch (_sinkType)
+            {
+                case PulseSinkType.SinkInput:
+                    return $"[{_sinkID}] {_applicationName}";
+                case PulseSinkType.SinkOutput:
+                    return $"{_sinkID} {_nodeName}";
+                default:
+                    return "god send us help";
+            }
         }
     }
 

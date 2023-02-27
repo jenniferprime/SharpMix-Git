@@ -21,11 +21,15 @@ namespace SharpMix.Common.Module
 
         private List<String[]> _groups;
 
+        private Dictionary<int, int> _currentToggleValues;
+
         public VirtualMidiMap()
         {
             _mappedControlChange2 = new Dictionary<int, MidiMappedAction>();
             _controlChangeValue = new Dictionary<int, int>();
             _mapCCtoValue = new Dictionary<int, int>();
+
+            _currentToggleValues = new Dictionary<int, int>();
 
             mappedSink = new Dictionary<string, int>();
             mappedDevice = new Dictionary<string, int>();
@@ -33,19 +37,19 @@ namespace SharpMix.Common.Module
 
         public bool MapAction(int CC, MidiMappedAction mappedAction)
         {
-            _mappedControlChange2.Add(CC, mappedAction);
+            _mappedControlChange2[CC] = mappedAction;
             return true;
         }
 
         public bool MapToggle(int CC, MappedToggle mappedToggle)
         {
-            _mappedControlChange2.Add(CC, mappedToggle);
+            _mappedControlChange2[CC] = mappedToggle;
             return true;
         }
 
         public bool MapFader(int CC, MappedFader mappedFader)
         {
-            _mappedControlChange2.Add(CC, mappedFader);
+            _mappedControlChange2[CC] = mappedFader;
             return true;
         }
 
@@ -89,6 +93,16 @@ namespace SharpMix.Common.Module
             _controlChangeValue[CC] = CCvalue;
 
             if(action != null) action.ExecuteAction(CCvalue, CC);
+        }
+
+        public int GetNewToggleValue(int CC)
+        {
+            if (!_currentToggleValues.ContainsKey(CC))
+            {
+                _currentToggleValues[CC] = 0;
+            }
+
+            return _currentToggleValues[CC];
         }
     }
 }

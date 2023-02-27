@@ -27,6 +27,7 @@ namespace SharpMix.Common.Module.MappedActions
         MappedFader,
         MappedToggle,
         MappedLayer,
+        MappedButton,
 
 
         PulseMute,

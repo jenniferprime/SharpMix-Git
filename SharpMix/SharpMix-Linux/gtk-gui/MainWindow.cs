@@ -65,6 +65,8 @@ public partial class MainWindow
 
 	private global::Gtk.Button btn_addFaders;
 
+	private global::Gtk.Button btn_openAttachDialog;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -389,6 +391,16 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_addFaders]));
 		w30.X = 1421;
 		w30.Y = 378;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.btn_openAttachDialog = new global::Gtk.Button();
+		this.btn_openAttachDialog.CanFocus = true;
+		this.btn_openAttachDialog.Name = "btn_openAttachDialog";
+		this.btn_openAttachDialog.UseUnderline = true;
+		this.btn_openAttachDialog.Label = global::Mono.Unix.Catalog.GetString("Open Attach Dialog");
+		this.fixed1.Add(this.btn_openAttachDialog);
+		global::Gtk.Fixed.FixedChild w31 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btn_openAttachDialog]));
+		w31.X = 1435;
+		w31.Y = 91;
 		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
@@ -410,5 +422,6 @@ public partial class MainWindow
 		this.b_setMainOut.Clicked += new global::System.EventHandler(this.OnBSetMainOutClicked);
 		this.btn_listSinkInput.Clicked += new global::System.EventHandler(this.OnBtnListSinkInputClicked);
 		this.btn_addFaders.Clicked += new global::System.EventHandler(this.OnBtnAddFadersClicked);
+		this.btn_openAttachDialog.Clicked += new global::System.EventHandler(this.OnBtnOpenAttachDialogClicked);
 	}
 }

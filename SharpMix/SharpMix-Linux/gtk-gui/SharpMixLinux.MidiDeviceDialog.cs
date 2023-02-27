@@ -27,7 +27,6 @@ namespace SharpMixLinux
 			global::Stetic.Gui.Initialize(this);
 			// Widget SharpMixLinux.MidiDeviceDialog
 			this.Name = "SharpMixLinux.MidiDeviceDialog";
-			this.Title = global::Mono.Unix.Catalog.GetString("dialog1");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			// Internal child SharpMixLinux.MidiDeviceDialog.VBox
 			global::Gtk.VBox w1 = this.VBox;

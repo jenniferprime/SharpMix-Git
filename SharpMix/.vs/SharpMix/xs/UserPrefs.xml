@@ -1,19 +1,37 @@
 ﻿<Properties StartupConfiguration="{1C2E9EDD-F2BF-46D0-A7AC-FF410DF6B69B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/MidiDeviceDialog.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/AttachAction.cs">
     <Files>
-      <File FileName="SharpMix-Linux/MainWindow.cs" Line="381" Column="6" />
-      <File FileName="SharpMix-Linux/AttachAction.cs" Line="12" Column="1" />
-      <File FileName="SharpMix-Linux/MidiDeviceDialog.cs" Line="1" Column="1" />
+      <File FileName="SharpMix-Linux/Common/Module/VirtualMidiMap.cs" Line="4" Column="1" />
+      <File FileName="SharpMix-Linux/AttachAction.cs" Line="19" Column="30" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" Line="209" Column="97" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Model/AseqdumpPortInfo.cs" Line="33" Column="9" />
+      <File FileName="SharpMix-Linux/MidiDeviceDialog.cs" Line="16" Column="47" />
+      <File FileName="SharpMix-Linux/MainWindow.cs" Line="465" Column="28" />
+      <File FileName="SharpMix-Linux/SMConfig.cs" Line="23" Column="71" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SharpMix" expanded="True">
             <Node name="SharpMix-Linux" expanded="True">
-              <Node name="MidiDeviceDialog.cs" selected="True" />
+              <Node name="Common" expanded="True">
+                <Node name="Module" expanded="True" />
+              </Node>
+              <Node name="Linux" expanded="True">
+                <Node name="Cli" expanded="True">
+                  <Node name="Model" expanded="True">
+                    <Node name="PulseAudio" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="AttachAction.cs" selected="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -21,7 +39,11 @@
   <MonoDevelop.Ide.ItemProperties.SharpMix-Linux PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/MainWindow.cs" relfile="SharpMix-Linux/MainWindow.cs" line="444" column="1" />
+      <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/MainWindow.cs" relfile="SharpMix-Linux/MainWindow.cs" line="362" column="1" />
+      <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/AttachAction.cs" relfile="SharpMix-Linux/AttachAction.cs" line="48" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
