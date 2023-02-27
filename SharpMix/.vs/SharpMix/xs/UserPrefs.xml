@@ -1,45 +1,19 @@
 ﻿<Properties StartupConfiguration="{1C2E9EDD-F2BF-46D0-A7AC-FF410DF6B69B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/MidiDeviceDialog.cs">
     <Files>
-      <File FileName="SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" Line="22" Column="42" />
       <File FileName="SharpMix-Linux/MainWindow.cs" Line="381" Column="6" />
-      <File FileName="SharpMix-Linux/SMConfig.cs" Line="22" Column="78" />
-      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MappedType.cs" Line="11" Column="20" />
-      <File FileName="SharpMix-Linux/Common/Module/VirtualMidiMap.cs" Line="29" Column="13" />
-      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MappedToggle.cs" Line="28" Column="39" />
-      <File FileName="SharpMix-Linux/Common/Module/MappedActions/PremappedActions.cs" Line="27" Column="2" />
-      <File FileName="SharpMix-Linux/Linux/Cli/Handler/AseqdumpHandler.cs" Line="19" Column="30" NotebookId="1" />
-      <File FileName="SharpMix-Linux/Linux/Actions/PulseAudio.cs" Line="16" Column="9" NotebookId="1" />
-      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MappedFader.cs" Line="31" Column="49" NotebookId="1" />
-      <File FileName="SharpMix-Linux/Common/Module/MappedActions/MidiMappedAction.cs" Line="12" Column="41" NotebookId="1" />
+      <File FileName="SharpMix-Linux/AttachAction.cs" Line="12" Column="1" />
+      <File FileName="SharpMix-Linux/MidiDeviceDialog.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SharpMix" expanded="True">
             <Node name="SharpMix-Linux" expanded="True">
-              <Node name="UserInterface" expanded="True" />
-              <Node name="Common" expanded="True">
-                <Node name="Module" expanded="True">
-                  <Node name="MappedActions" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Linux" expanded="True">
-                <Node name="Actions" expanded="True" />
-                <Node name="Cli" expanded="True">
-                  <Node name="Handler" expanded="True" />
-                  <Node name="Model" expanded="True">
-                    <Node name="PulseAudio" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="MainWindow.cs" selected="True" />
+              <Node name="MidiDeviceDialog.cs" selected="True" />
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

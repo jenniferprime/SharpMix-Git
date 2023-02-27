@@ -86,6 +86,8 @@
     <Compile Include="Linux\Cli\Model\PlayerCtl.cs" />
     <Compile Include="Linux\Cli\Handler\PlayerCtl.cs" />
     <Compile Include="Linux\Cli\Model\PulseAudio\PulseSink.cs" />
+    <Compile Include="AttachAction.cs" />
+    <Compile Include="gtk-gui\SharpMixLinux.AttachAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
