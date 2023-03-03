@@ -52,12 +52,13 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
             _applicationPID = applicationPID;
         }
 
-        public PulseSink(PulseSinkType sinkType, int sinkID, string driver, string protoVoluem, string friendlyName)
+        public PulseSink(PulseSinkType sinkType, int sinkID, string driver, string protoVoluem, string friendlyName, string nodeName)
         {
             _sinkType = sinkType;
             _sinkID = sinkID;
             _protoVolume = protoVoluem;
-            _nodeName = friendlyName;
+            _nodeName = nodeName;
+            _applicationName = friendlyName;
         }
 
 
@@ -159,7 +160,7 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
                         protoVolume = Regex.Replace(line, "\\s*Volume: ", "");
                     }*/
                 }
-                if (sid != -1 && sinks.Count == 0)
+                if (sid != -1)
                 {
                     sinks.Add(new PulseSink(sinkType, sid, driver, protoVolume, nodeName, applicationName, applicationXDisplay, applicationUser, applicationHost, applicationPID));
                 }
@@ -206,7 +207,7 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
                     {
                         if (sid != -1)
                         {
-                            sinks.Add(new PulseSink(sinkType, sid, driver, protoVolume, nodeName));
+                            sinks.Add(new PulseSink(sinkType, sid, driver, protoVolume, applicationName, nodeName));
                         }
 
                         driver = ""; protoVolume = ""; nodeName = ""; applicationName = ""; applicationXDisplay = ""; applicationUser = ""; applicationHost = ""; applicationPID = "";
@@ -224,7 +225,11 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
                     }
                     else if (line.Contains("alsa.card_name = "))
                     {
-                        nodeName = StripPluseListWithEqualsSign(line, "alsa.card_name");
+                        applicationName = StripPluseListWithEqualsSign(line, "alsa.card_name");
+                    }
+                    else if (line.Contains("node.nick = "))
+                    {
+                        nodeName = StripPluseListWithEqualsSign(line, "node.nick");
                     }
 
                     /*else if (line.Contains("Volume: "))
@@ -267,7 +272,9 @@ namespace SharpMix.Linux.Cli.Model.PulseAudio
                 case PulseSinkType.SinkInput:
                     return $"[{_sinkID}] {_applicationName}";
                 case PulseSinkType.SinkOutput:
-                    return $"{_sinkID} {_nodeName}";
+                    string name = _applicationName;
+                    if (_applicationName != _nodeName) name += $" - {_nodeName}";
+                    return $"[{_sinkID}] {name}";
                 default:
                     return "god send us help";
             }

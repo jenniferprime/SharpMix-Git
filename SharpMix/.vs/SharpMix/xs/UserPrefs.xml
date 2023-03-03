@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="SharpMix-Linux/AttachAction.cs">
     <Files>
       <File FileName="SharpMix-Linux/Common/Module/VirtualMidiMap.cs" Line="4" Column="1" />
-      <File FileName="SharpMix-Linux/AttachAction.cs" Line="19" Column="30" />
-      <File FileName="SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" Line="209" Column="97" />
+      <File FileName="SharpMix-Linux/AttachAction.cs" Line="48" Column="1" />
+      <File FileName="SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" Line="111" Column="1" />
       <File FileName="SharpMix-Linux/Linux/Cli/Model/AseqdumpPortInfo.cs" Line="33" Column="9" />
       <File FileName="SharpMix-Linux/MidiDeviceDialog.cs" Line="16" Column="47" />
       <File FileName="SharpMix-Linux/MainWindow.cs" Line="465" Column="28" />
@@ -43,6 +43,7 @@
       <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/MainWindow.cs" relfile="SharpMix-Linux/MainWindow.cs" line="444" column="1" />
       <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/MainWindow.cs" relfile="SharpMix-Linux/MainWindow.cs" line="362" column="1" />
       <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/AttachAction.cs" relfile="SharpMix-Linux/AttachAction.cs" line="48" column="1" />
+      <Breakpoint file="/home/jennifer/Documents/GitHub/SharpMix-Git/SharpMix/SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" relfile="SharpMix-Linux/Linux/Cli/Model/PulseAudio/PulseSink.cs" line="111" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
